@@ -14,12 +14,11 @@ export class AuthenticationController {
   constructor(private readonly authService: AuthenticationService) {}
 
   @Post('sign-up')
-  signUp(@Body() signUpDto: SignUpDto) {
-    console.log('in sign-up')
+  signUp(@Body() signUpDto: SignUpDto, @Res({ passthrough: true }) response: Response) {
     return this.authService.signUp(signUpDto);
   }
 
-  @HttpCode(HttpStatus.OK) // by default @Post does 201, we wanted 200 - hence using @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.OK) 
   @Post('sign-in')
   signIn(
     @Res({ passthrough: true }) response: Response,
@@ -28,7 +27,7 @@ export class AuthenticationController {
     return this.authService.signIn(signInDto);
   }
 
-  @HttpCode(HttpStatus.OK) // by default @Post does 201, we wanted 200 - hence using @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.OK)
   @Post('change-password')
   changePassword(
     @Res({ passthrough: true }) response: Response,

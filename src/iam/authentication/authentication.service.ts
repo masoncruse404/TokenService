@@ -34,7 +34,6 @@ import {
   
     async signUp(signUpDto: SignUpDto) {
       try {
-        console.log('signUp',signUpDto)
         const user = new User();
         user.email = signUpDto.email;
         user.password = await this.hashingService.hash(signUpDto.password);
@@ -63,7 +62,6 @@ import {
       if (!isEqual) {
         throw new UnauthorizedException('Password does not match');
       }
-      console.log('generateTokens')
       return await this.generateTokens(user);
     }
 
@@ -85,7 +83,7 @@ import {
 
       user.password = await this.hashingService.hash(changePasswordDto.newPassword);
       await this.usersRepository.save(user);
-      console.log('user',user)
+  
       return
     }
   
