@@ -11,12 +11,10 @@ services:
       dockerfile: Dockerfile
     container_name: nest-docker-postgres-aws
     env_file:
-      - ./.env
-
+      - ./.en
     ports:
       - '3000:3000'
     depends_on:
       - redis
-
     volumes:
       - ./src:/app/src

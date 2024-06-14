@@ -33,6 +33,7 @@ import {
     ) {}
   
     async signUp(signUpDto: SignUpDto) {
+     
       try {
         const user = new User();
         user.email = signUpDto.email;
